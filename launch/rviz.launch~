@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="config_file" default="/home/sysadm/.rviz/kinect.rviz"/>
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(arg config_file)" />
+</launch>

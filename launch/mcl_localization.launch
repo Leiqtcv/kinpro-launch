@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- default: /camera/depth/points or /camera/depth_registered/points -->
+	<arg name="point_cloud_topic" default="/camera/depth/points" />
+
+	<node pkg="humanoid_localization" type="localization_node" name="humanoid_localization" output="screen" >
+		<rosparam file="$(find kinpro_launch)/launch/mcl_localization.yaml" command="load" />
+		<remap from="/point_cloud" to="$(arg point_cloud_topic)" />
+	</node>
+</launch>

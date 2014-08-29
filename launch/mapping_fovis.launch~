@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- currently the kinfuLS app has to be started seperately due to conflicting workspaces! --> 
+<launch>
+	<!-- launch the camera -->
+	<!--include file="$(find kinect_launchfiles)/launch/camera.launch">
+		<arg name="dreg" value="false"/>
+	</include-->
+	
+	<!-- launch the static tf transforms -->
+	<include file="$(find kinect_launchfiles)/launch/tf_base2camlink.launch">
+		<arg name="kinfu" value="false"/>
+		<arg name="fovis" value="true"/>
+	</include>
+
+	<!-- launch the octomap mapping -->
+	<include file="$(find kinect_launchfiles)/launch/octomap_mapping.launch">
+		<arg name="point_cloud_topic" value="/camera/depth_registered/points" />
+		<arg name="map" value="" />
+		<arg name="latch" value="false" />
+		<arg name="frame_id" value="/map" />
+	</include>
+
+	<!-- launch the fovis visual odometry node -->
+	<include file="$(find kinect_launchfiles)/launch/fovis.launch">
+	</include>
+	
+	<!-- launch rviz -->
+	<include file="$(find kinect_launchfiles)/launch/rviz.launch">
+		<arg name="config_file" value="/home/sysadm/.rviz/kinect_dreg.rviz"/>
+	</include>
+</launch>

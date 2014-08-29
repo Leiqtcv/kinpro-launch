@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!-- currently the kinfuLS app has to be started seperately due to conflicting workspaces! --> 
+<launch>
+	<!-- launch the camera -->
+	<!--include file="$(find kinect_launchfiles)/launch/camera.launch">
+		<arg name="dreg" value="false"/>
+	</include-->
+	
+	<!-- launch the static tf transforms -->
+	<include file="$(find kinect_launchfiles)/launch/tf_base2camlink.launch">
+		<arg name="kinfu" value="true"/>
+		<arg name="fovis" value="false"/>
+	</include>
+
+	<!-- launch the octomap server -->
+	<include file="$(find kinect_launchfiles)/launch/octomap_server.launch">
+		<arg name="map" value="/home/sysadm/octomaps/robolab.bt"/>
+	</include>
+
+	<!-- launch the imu dummy node -->
+	<include file="$(find kinect_launchfiles)/launch/imu_dummy.launch">
+	</include>
+
+	<!-- launch the monte carlo localization node -->
+	<include file="$(find kinect_launchfiles)/launch/mcl_localization.launch">
+		<arg name="point_cloud_topic" value="/camera/depth/points"/>
+	</include>
+
+	<!-- launch the odometry combination node -->
+	<include file="$(find kinect_launchfiles)/launch/odom_ekf.launch">
+		<arg name="visual_odometry_topic" default="/vo" />
+		<arg name="output_odometry_topic" default="/odom_combined" />
+	</include>
+	
+	<!-- launch rviz -->
+	<include file="$(find kinect_launchfiles)/launch/rviz.launch">
+		<arg name="config_file" value="/home/sysadm/.rviz/kinect.rviz"/>
+	</include>
+</launch>
