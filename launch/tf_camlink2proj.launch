@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+		<!-- taken from the openni_launch kinect_frames. projector link is equal to camera_rgb_optical_frame -->
+		<node pkg="tf" type="static_transform_publisher" name="camlink2projbase_broadcaster" args="0.0 -0.045 0.0 -1.5707963267948966 0.0 -1.5707963267948966 /camera_link /projector_link 100" />
+
+		<!-- determined by camera projector calibration using bouguets camera calibration and procamcalib for matlab -->
+		<node pkg="tf" type="static_transform_publisher" name="projbase2proj_broadcaster" args="-0.0272556 -0.0495066 -0.0205514 -0.0104006650611781791 0.010600089699266141 -0.261182183987885405 /projector_link /projector 100" />
+
+<!-- TODO maybe combine transformation into single tf broadcaster? Would mean the transformation has to be calculated after every new calibration -->
+
+	
+</launch>
