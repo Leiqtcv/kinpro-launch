@@ -2,7 +2,7 @@
 <launch>
 	<node pkg="imu_dummy" type="imu_dummy_node" name="imu_dummy" output="screen" >
 		<param name="roll" type="double" value="0.0" />
-		<param name="pitch" type="double" value="0.0" />
+		<param name="pitch" type="double" value="-16.5" />
 		<param name="yaw" type="double" value="0.0" />
 
 		<param name="cov_or_x" type="double" value="0.01" />
@@ -25,6 +25,7 @@
 		<param name="cov_acc_y" type="double" value="0.01" />
 		<param name="cov_acc_z" type="double" value="0.01" />
 		
+		<param name="use_arduino_msg" type="bool" value="true" />
 		<param name="simulate_movement" type="bool" value="false" />
 	</node>
 </launch>

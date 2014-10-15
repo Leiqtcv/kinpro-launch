@@ -1,4 +1,4 @@
-<!-- -->
+<?xml version="1.0"?>
 <launch>
 	<!-- set visual odometry source -> kinfu or fovis -->
 	<arg name="kinfu" default="false" />
@@ -9,7 +9,7 @@
 	</group>
 
 	<group if="$(arg fovis)">
-		<node pkg="tf" type="static_transform_publisher" name="base2camlink_broadcaster" args="0.2 0.2 0 0 0 0 /base /camera_link 100" />
+		<node pkg="tf" type="static_transform_publisher" name="base2camlink_broadcaster" args="0.0 0.0 0 0 0 0 /base /camera_link 100" />
 	</group>
 	
 </launch>

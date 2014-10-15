@@ -2,4 +2,6 @@
 <launch>
 	<!-- default port for imu: /dev/ttyUSB0 -->
 	<node pkg="rosserial_python" type="serial_node.py" name="serial_node" args="_port:=/dev/ttyUSB0" output="screen"/>
+
+	<!-- topics from arduino imu are geometry_msgs::Vector3 "/acc" for acceleration values and "/ypr" for yaw, pitch, roll values -->
 </launch>

@@ -36,8 +36,8 @@
 		<arg name="output_odometry_topic" value="/odom_combined" />
 	</include-->
 
-	<!-- launch the odometry combination node from robot_localization -->
-	<include file="$(find kinpro_launch)/launch/ekf.launch">
+	<!-- launch the odometry combination node from robot_localization (ekf_acc for acceleration inclusion)-->
+	<include file="$(find kinpro_launch)/launch/ekf_acc.launch">
 		<arg name="visual_odometry_topic" value="/kinect_odometer/odometry" />
 		<arg name="imu_topic" value="/imu" />
 	</include>

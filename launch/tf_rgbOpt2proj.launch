@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
 
-		<node pkg="tf" type="static_transform_publisher" name="rgbOpt2proj_broadcaster" args="-0.0272556 -0.0495066 -0.0205514 -0.0104006650611781791 0.010600089699266141 -0.261182183987885405 /camera_rgb_optical_frame /projector 100" />
+		<node pkg="tf" type="static_transform_publisher" name="rgbOpt2proj_broadcaster" args="-0.0272556 -0.0495066 -0.0205514 -0.104006650611781791 0.010600089699266141 -0.261182183987885405 /camera_rgb_optical_frame /projector 100" />
 	
 </launch>

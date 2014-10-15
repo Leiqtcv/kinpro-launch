@@ -12,7 +12,7 @@ use_raycasting: true
 #weight_factor_z: 5.0
 
 
-num_particles: 500
+num_particles: 100
 init_global: true
 init_from_truepose: false
 
@@ -115,17 +115,26 @@ initial_std/yaw: 0.2    # ~13 deg
 
 
 # added by LC for kinect
+# tf frames
+#default: odom
 odom_frame_id: /odom
 #default: odom
 target_frame_id: /odom
-#default: odom
-base_frame_id: /camera_link
 #default: torso
-base_footprint_id: /base
+base_frame_id: /camera_link
 #default: base_footprint
-global_frame_id: /map
+base_footprint_id: /base
 #default: map
+global_frame_id: /map
+
+# use the imu input from topic /imu
 use_imu: true
+
+# dont filter the point cloud for ground plane extraction
 ground_filter_point_cloud: false
-max_height: 0.4
-initial_pose_real_zrp: false
+
+# minimum and maximum height for particle distribution, custom parameters added by LC
+max_height: 0.8
+min_height: 0.5
+
+initial_pose_real_zrp: true
