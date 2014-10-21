@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <launch>
-	<arg name="map" default="/home/sysadm/octomaps/room033_obstacles.bt" />
+	<arg name="map" default="" />
 	<arg name="frame_id" default="/odom" />
 	<arg name="max_range" default="10.0" />
 	<arg name="latch" default="true" />
 	<arg name="point_cloud_topic" default="/camera/depth/points" />
+	<arg name="resolution" default="0.02" />
 	
 	<node pkg="octomap_server" type="octomap_server_node" name="octomap_server" args="$(arg map)">
-		<param name="resolution" value="0.02" />
+		<param name="resolution" value="$(arg resolution)" />
 		
 		<!-- fixed map frame (set to 'map' if SLAM or localization running!) - default: /odom_combined  -->
 		<param name="frame_id" type="string" value="$(arg frame_id)" />

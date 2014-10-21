@@ -13,7 +13,7 @@
 
 	<!-- launch the octomap server -->
 	<include file="$(find kinpro_launch)/launch/octomap_server.launch">
-		<arg name="map" value="/home/sysadm/octomaps/room033_obstacles.bt"/>
+		<arg name="map" value="/home/sysadm/octomaps/PKM_Lab_rgbdslam_0-05.bt"/>
 	</include>
 
 	<!-- launch the imu dummy node -->

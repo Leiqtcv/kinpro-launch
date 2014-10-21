@@ -4,7 +4,7 @@
 
 
  # raycasting (slow) or endpoint model (approx)
-use_raycasting: true
+use_raycasting: false
 
 # for testing only!
 # weight_factor_roll: 0.0
@@ -12,7 +12,8 @@ use_raycasting: true
 #weight_factor_z: 5.0
 
 
-num_particles: 100
+num_particles: 200
+num_particles_global_localization: 10000
 init_global: true
 init_from_truepose: false
 
@@ -31,10 +32,17 @@ neff_factor: 1.0
 sensor_sampling_dist: 0.2
 
 # min traversed odometry interval between laser measurements:
-#linear threshold for resampling (in m)
-update_min_trans: 0.2
-#angular treshold for resampling (in radians)
-update_min_rot: 0.785
+#linear (m) and angular (rad) and head rotation (rad) thresholds for resampling
+#smaller values possible if endpoint model is used
+#update_min_trans: 0.2
+#update_min_rot: 0.785
+#update_min_head_yaw: 0.5
+#update_min_head_pitch: 0.5
+update_min_trans: 0.15
+update_min_rot: 0.15
+update_min_head_yaw: 0.15
+update_min_head_pitch: 0.15
+
 
 # laser obs. model (for raycasting only)
 raycasting/z_hit: 0.8
@@ -109,9 +117,9 @@ initial_pose/yaw: 0.0
 initial_std/x: 0.03
 initial_std/y: 0.03
 initial_std/z: 0.015
-initial_std/roll: 0.04
-initial_std/pitch: 0.04
-initial_std/yaw: 0.2    # ~13 deg
+initial_std/roll: 0.00
+initial_std/pitch: 0.00
+initial_std/yaw: 0.0    # 0.2 ~13 deg
 
 
 # added by LC for kinect
@@ -134,7 +142,7 @@ use_imu: true
 ground_filter_point_cloud: false
 
 # minimum and maximum height for particle distribution, custom parameters added by LC
-max_height: 0.8
-min_height: 0.5
+max_height: 0.10
+min_height: 0.01
 
 initial_pose_real_zrp: true

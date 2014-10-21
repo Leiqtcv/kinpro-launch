@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-	<!-- default: false -->
-	<arg name="dreg" default="false" />
+	<!-- true for fovis, false for kinfuLS -->
+	<arg name="dreg" default="true" />
 	
 	<include file="/home/sysadm/catkin_workspace/src/kinpro_launch/launch/openni.launch" >
 		<arg name="depth_registration" value="$(arg dreg)" />

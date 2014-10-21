@@ -2,7 +2,7 @@
 <launch>
   <!-- This should be the same as used with openni_launch -->
   <arg name="camera" default="camera" />
-  <arg name="image" default="image_raw" />
+  <arg name="image" default="image_rect_mono" />
   <arg name="depth_image" default="image_raw" />
 	<arg name="publish_tf" default="true" />
  
@@ -12,12 +12,13 @@
     <remap from="image_raw" to="$(arg camera)/depth_registered/$(arg depth_image)"/>
     <remap from="image" to="$(arg camera)/depth_registered/image_rect"/>
   </node>
+
   <node pkg="fovis_ros" type="fovis_mono_depth_odometer" name="kinect_odometer" output="screen">
     <remap from="/camera/rgb/image_rect" to="$(arg camera)/rgb/$(arg image)" />
     <remap from="/camera/rgb/camera_info" to="$(arg camera)/rgb/camera_info" />
     <remap from="/camera/depth_registered/camera_info" to="$(arg camera)/depth_registered/camera_info" />
     <remap from="/camera/depth_registered/image_rect" to="$(arg camera)/depth_registered/image_rect" />
-    <param name="approximate_sync" type="bool" value="True" />
+    <param name="approximate_sync" type="bool" value="true" />
     <param name="base_link_frame_id" type="string" value="/base" />
     <param name="odom_frame_id" type="string" value="/odom" />
     <param name="publish_tf" type="bool" value="$(arg publish_tf)" />

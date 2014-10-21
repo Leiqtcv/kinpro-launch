@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<!-- currently the kinfuLS app has to be started seperately due to conflicting workspaces! --> 
 <launch>
 	<!-- launch the camera -->
 	<!--include file="$(find kinpro_launch)/launch/camera.launch">
