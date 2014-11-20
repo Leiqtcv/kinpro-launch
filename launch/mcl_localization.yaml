@@ -13,7 +13,9 @@ use_raycasting: false
 
 
 num_particles: 200
-num_particles_global_localization: 10000
+num_particles_global_localization: 20000
+num_particles_local_localization: 200
+
 init_global: true
 init_from_truepose: false
 
@@ -23,12 +25,13 @@ init_from_truepose: false
 # init_from_truepose: false
 
 # rel. number of effectice particles for resampling threshold (0: never, 1: always)
-neff_factor: 1.0 
+neff_factor: 1.0
 
 # minimum weight for a particle (normal scale, need to sum up to < 1!)
 # Warning: this keeps the particles from converging properly!
 #min_particle_weight: 0.000001
 
+#LC: voxelization filter parameter, should it be the same as the octomap resolution?
 sensor_sampling_dist: 0.2
 
 # min traversed odometry interval between laser measurements:
@@ -38,10 +41,10 @@ sensor_sampling_dist: 0.2
 #update_min_rot: 0.785
 #update_min_head_yaw: 0.5
 #update_min_head_pitch: 0.5
-update_min_trans: 0.15
-update_min_rot: 0.15
-update_min_head_yaw: 0.15
-update_min_head_pitch: 0.15
+update_min_trans: 1.5
+update_min_rot: 0.5
+update_min_head_yaw: 0.5
+update_min_head_pitch: 0.5
 
 
 # laser obs. model (for raycasting only)
@@ -56,9 +59,10 @@ raycasting/lambda_short: 0.1
 # std.dev for gaussian (p_hit)
 #use in loc
 endpoint/sigma: 0.05
+endpoint/max_obstacle_distance: 8.0
+
 #used for global:
 #laser_endp_sigma: 0.07
-
 
 #motion_mean_z: 0.317
 #motion_range_z: 0.03
@@ -142,7 +146,14 @@ use_imu: true
 ground_filter_point_cloud: false
 
 # minimum and maximum height for particle distribution, custom parameters added by LC
-max_height: 0.10
-min_height: 0.01
+max_height: 1.2
+min_height: 0.8
+
+# distribution width parameters
+dist_linear: 0.1
+dist_angular: 0.1
 
 initial_pose_real_zrp: true
+
+#select if the published pose is suposed to be calculated by the mean of the distribution
+best_particle_as_mean: true

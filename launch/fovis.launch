@@ -4,7 +4,7 @@
   <arg name="camera" default="camera" />
   <arg name="image" default="image_rect_mono" />
   <arg name="depth_image" default="image_raw" />
-	<arg name="publish_tf" default="true" />
+  <arg name="publish_tf" default="true" />
  
   <node pkg="nodelet" type="nodelet" args="manager" name="nodelet_manager" />
   <node pkg="nodelet" type="nodelet" name="convert_openni_fovis" 

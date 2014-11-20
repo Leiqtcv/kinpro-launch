@@ -1,9 +1,62 @@
 <?xml version="1.0"?>
 <launch>
-	<!-- launch the camera -->
-	<!--include file="$(find kinpro_launch)/launch/camera.launch">
-		<arg name="dreg" value="true"/>
-	</include-->
+
+	<arg name="rosbag_camera" default="false" />
+
+	<group unless="$(arg rosbag_camera)" >
+		<!-- launch the camera -->
+		<!--include file="$(find kinpro_launch)/launch/camera.launch">
+			<arg name="dreg" value="true"/>
+		</include-->
+
+		<!-- launch the fovis visual odometry node -->
+		<include file="$(find kinpro_launch)/launch/fovis.launch">
+			<arg name="publish_tf" value="false" />
+			<arg name="camera" value="camera" />
+		</include>
+
+		<!-- launch the monte carlo localization node -->
+		<include file="$(find kinpro_launch)/launch/mcl_localization.launch">
+			<arg name="point_cloud_topic" value="/camera/depth_registered/points"/>
+		</include>
+
+		<!-- launch rviz -->
+		<include file="$(find kinpro_launch)/launch/rviz.launch">
+			<arg name="config_file" value="/home/sysadm/.rviz/kinect_dreg.rviz"/>
+		</include>
+
+	</group>
+	<group if="$(arg rosbag_camera)" >
+		<!-- launch the camera without driver -->
+		<include file="$(find kinpro_launch)/launch/camera.launch">
+			<arg name="dreg" value="true"/>
+			<arg name="driver" value="false" />
+		</include>
+
+		<!-- launch the rosbag -->
+		<include file="$(find kinpro_launch)/launch/rosbag.launch"/>
+
+		<!-- launch the topic replacement node -->
+		<include file="$(find kinpro_launch)/launch/rosbag2pointcloud.launch"/>
+
+		<!-- launch the fovis visual odometry node -->
+		<include file="$(find kinpro_launch)/launch/fovis.launch">
+			<arg name="publish_tf" value="false" />
+			<arg name="camera" value="rosbag_cam" />
+		</include>
+
+		<!-- launch the monte carlo localization node -->
+		<include file="$(find kinpro_launch)/launch/mcl_localization.launch">
+			<arg name="point_cloud_topic" value="/rosbag_cam/depth_registered/points"/>
+		</include>
+
+		<!-- launch rviz -->
+		<include file="$(find kinpro_launch)/launch/rviz.launch">
+			<arg name="config_file" value="/home/sysadm/.rviz/kinect_dreg_rosbag.rviz"/>
+		</include>
+
+	</group>
+
 	
 	<!-- launch the static tf transforms -->
 	<include file="$(find kinpro_launch)/launch/tf_base2camlink.launch">
@@ -13,21 +66,11 @@
 
 	<!-- launch the octomap server -->
 	<include file="$(find kinpro_launch)/launch/octomap_server.launch">
-		<arg name="map" value="/home/sysadm/octomaps/PKM_Lab_rgbdslam_0-05.bt"/>
+		<arg name="map" value="/home/sysadm/octomaps/room033_cubes.bt"/>
 	</include>
 
 	<!-- launch the imu dummy node -->
 	<include file="$(find kinpro_launch)/launch/imu_dummy.launch">
-	</include>
-
-	<!-- launch the fovis visual odometry node -->
-	<include file="$(find kinpro_launch)/launch/fovis.launch">
-		<arg name="publish_tf" value="false" />
-	</include>
-
-	<!-- launch the monte carlo localization node -->
-	<include file="$(find kinpro_launch)/launch/mcl_localization.launch">
-		<arg name="point_cloud_topic" value="/camera/depth_registered/points"/>
 	</include>
 
 	<!-- launch the odometry combination node from robot_pose_ekf-->
@@ -42,8 +85,4 @@
 		<arg name="imu_topic" value="/imu" />
 	</include>
 	
-	<!-- launch rviz -->
-	<include file="$(find kinpro_launch)/launch/rviz.launch">
-		<arg name="config_file" value="/home/sysadm/.rviz/kinect_dreg.rviz"/>
-	</include>
 </launch>

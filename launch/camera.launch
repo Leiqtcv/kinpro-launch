@@ -2,8 +2,10 @@
 <launch>
 	<!-- true for fovis, false for kinfuLS -->
 	<arg name="dreg" default="true" />
+	<arg name="driver" default="false" />
 	
 	<include file="/home/sysadm/catkin_workspace/src/kinpro_launch/launch/openni.launch" >
 		<arg name="depth_registration" value="$(arg dreg)" />
+		<arg name="load_driver" value="$(arg driver)" />
 	</include>
 </launch>
