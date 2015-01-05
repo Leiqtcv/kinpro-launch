@@ -4,7 +4,7 @@
 
 
  # raycasting (slow) or endpoint model (approx)
-use_raycasting: false
+use_raycasting: true
 
 # for testing only!
 # weight_factor_roll: 0.0
@@ -13,7 +13,7 @@ use_raycasting: false
 
 
 num_particles: 200
-num_particles_global_localization: 20000
+num_particles_global_localization: 10000
 num_particles_local_localization: 200
 
 init_global: true
@@ -31,7 +31,7 @@ neff_factor: 1.0
 # Warning: this keeps the particles from converging properly!
 #min_particle_weight: 0.000001
 
-#LC: voxelization filter parameter, should it be the same as the octomap resolution?
+#LC: voxelization filter parameter, should it be correlating to the octomap resolution?
 sensor_sampling_dist: 0.2
 
 # min traversed odometry interval between laser measurements:

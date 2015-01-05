@@ -5,9 +5,10 @@
 
 	<group unless="$(arg rosbag_camera)" >
 		<!-- launch the camera -->
-		<!--include file="$(find kinpro_launch)/launch/camera.launch">
+		<include file="$(find kinpro_launch)/launch/camera.launch">
 			<arg name="dreg" value="true"/>
-		</include-->
+			<arg name="driver" value="true"/>
+		</include>
 
 		<!-- launch the fovis visual odometry node -->
 		<include file="$(find kinpro_launch)/launch/fovis.launch">
@@ -17,13 +18,19 @@
 
 		<!-- launch the monte carlo localization node -->
 		<include file="$(find kinpro_launch)/launch/mcl_localization.launch">
-			<arg name="point_cloud_topic" value="/camera/depth_registered/points"/>
+			<!--arg name="point_cloud_topic" value="/rosbag_cam/depth_registered/points"/-->
+			<arg name="point_cloud_topic" value="/cloud_pcd"/>
 		</include>
 
 		<!-- launch rviz -->
-		<include file="$(find kinpro_launch)/launch/rviz.launch">
+		<!--include file="$(find kinpro_launch)/launch/rviz.launch">
 			<arg name="config_file" value="/home/sysadm/.rviz/kinect_dreg.rviz"/>
-		</include>
+		</include-->
+
+		<!-- launch the interaction node -->
+		<!--include file="$(find kinpro_launch)/launch/interaction.launch">
+			<arg name="rosbag" value="false"/>
+		</include-->
 
 	</group>
 	<group if="$(arg rosbag_camera)" >
@@ -47,7 +54,8 @@
 
 		<!-- launch the monte carlo localization node -->
 		<include file="$(find kinpro_launch)/launch/mcl_localization.launch">
-			<arg name="point_cloud_topic" value="/rosbag_cam/depth_registered/points"/>
+			<!--arg name="point_cloud_topic" value="/rosbag_cam/depth_registered/points"/-->
+			<arg name="point_cloud_topic" value="/cloud_pcd"/>
 		</include>
 
 		<!-- launch rviz -->
@@ -66,7 +74,8 @@
 
 	<!-- launch the octomap server -->
 	<include file="$(find kinpro_launch)/launch/octomap_server.launch">
-		<arg name="map" value="/home/sysadm/octomaps/room033_cubes.bt"/>
+		<!--arg name="map" value="/home/sysadm/octomaps/Lab/PKM_lab_wall_02_clean_0-01.bt"/-->
+		<arg name="map" value="/home/sysadm/octomaps/033/14-11-12/033_stitched_merged_0-02.bt"/>
 	</include>
 
 	<!-- launch the imu dummy node -->
