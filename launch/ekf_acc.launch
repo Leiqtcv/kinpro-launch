@@ -42,7 +42,7 @@
       <!--rosparam param="odom1_config">[false, false, false, false, false, false, true, false, false, false, false, false]</rosparam>
       <rosparam param="pose0_config">[true, true, false, false, false, false, false, false, false, false, false, false]</rosparam>
       <rosparam param="twist0_config">[false, false, false, false, false, false, true, true, true, true, true, true]</rosparam-->
-      <rosparam param="imu0_config">[false, false, false, true, true, false, false, false, false, false, false, false, true, true, true]</rosparam>
+      <rosparam param="imu0_config">[false, false, false, true, true, false, false, false, false, false, false, false, false, false, false]</rosparam>
 
       <!-- The best practice for including new sensors in ekf_localization_node is to pass in velocity measurements and let
            ekf_localization_node integrate them. However, this isn't always feasible, and so ekf_localization (and the other
@@ -76,12 +76,12 @@
            is exposed as a configuration parameter. PLEASE NOTE that every value in this matrix *must* be specified
            as real-valued, i.e., it must have a decimal point. Integers don't load correctly. The values are ordered
            as x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw. -->
-      <rosparam param="process_noise_covariance">[0.03,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
-                                                  0.0,   0.03,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0, 
-                                                  0.0,   0.0,   0.4,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
-                                                  0.0,   0.0,   0.0,   0.03,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
-                                                  0.0,   0.0,   0.0,   0.0,   0.03,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
-                                                  0.0,   0.0,   0.0,   0.0,   0.0,   0.06,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+      <rosparam param="process_noise_covariance">[0.01,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+                                                  0.0,   0.01,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0, 
+                                                  0.0,   0.0,   0.01,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+                                                  0.0,   0.0,   0.0,   0.01,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+                                                  0.0,   0.0,   0.0,   0.0,   0.01,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+                                                  0.0,   0.0,   0.0,   0.0,   0.0,   0.01,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
                                                   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.025, 0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
                                                   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.025, 0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0, 
                                                   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.05,  0.0,   0.0,   0.0,   0.0,   0.0,   0.0,

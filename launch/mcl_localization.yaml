@@ -4,7 +4,7 @@
 
 
  # raycasting (slow) or endpoint model (approx)
-use_raycasting: true
+use_raycasting: false
 
 # for testing only!
 # weight_factor_roll: 0.0
@@ -13,7 +13,7 @@ use_raycasting: true
 
 
 num_particles: 200
-num_particles_global_localization: 10000
+num_particles_global_localization: 20000
 num_particles_local_localization: 200
 
 init_global: true
@@ -32,7 +32,7 @@ neff_factor: 1.0
 #min_particle_weight: 0.000001
 
 #LC: voxelization filter parameter, should it be correlating to the octomap resolution?
-sensor_sampling_dist: 0.2
+sensor_sampling_dist: 0.05
 
 # min traversed odometry interval between laser measurements:
 #linear (m) and angular (rad) and head rotation (rad) thresholds for resampling
@@ -41,25 +41,25 @@ sensor_sampling_dist: 0.2
 #update_min_rot: 0.785
 #update_min_head_yaw: 0.5
 #update_min_head_pitch: 0.5
-update_min_trans: 1.5
-update_min_rot: 0.5
-update_min_head_yaw: 0.5
-update_min_head_pitch: 0.5
+update_min_trans: 0.4
+update_min_rot: 0.3
+update_min_head_yaw: 0.3
+update_min_head_pitch: 0.2
 
 
 # laser obs. model (for raycasting only)
 raycasting/z_hit: 0.8
 raycasting/z_short: 0.1
-raycasting/z_max: 0.05
+raycasting/z_max: 0.10
 raycasting/z_rand: 0.05
-raycasting/sigma_hit: 0.02
+raycasting/sigma_hit: 0.08
 raycasting/lambda_short: 0.1
 
 # laser obs.model (for endpoint model only)
 # std.dev for gaussian (p_hit)
 #use in loc
-endpoint/sigma: 0.05
-endpoint/max_obstacle_distance: 8.0
+endpoint/sigma: 0.08
+endpoint/max_obstacle_distance: 2.0
 
 #used for global:
 #laser_endp_sigma: 0.07
@@ -72,6 +72,7 @@ endpoint/max_obstacle_distance: 8.0
 motion_sigma_z: 0.02
 motion_sigma_roll: 0.015 # 0.85 deg.
 motion_sigma_pitch: 0.015 # 0.85 deg.
+obs_squared_distance: false
 
 # noise of the motion model
 # std.devs for z,r,p depend on amount of translation (per meter):
@@ -110,8 +111,8 @@ motion_calib/ty:  0.0
 motion_calib/tt:  1.0
 
 # initial pose (when no truepose available):
-initial_pose/x: 2.0
-initial_pose/y: 2.0
+initial_pose/x: 0.0
+initial_pose/y: 0.0
 initial_pose/z: 0.0     # over z-plane 
 initial_pose/roll: 0.0
 initial_pose/pitch: 0.0
@@ -146,8 +147,10 @@ use_imu: true
 ground_filter_point_cloud: false
 
 # minimum and maximum height for particle distribution, custom parameters added by LC
-max_height: 1.2
-min_height: 0.8
+#max_height: 1.28
+#min_height: 1.22
+max_height: 0.88
+min_height: 0.82
 
 # distribution width parameters
 dist_linear: 0.1
@@ -155,5 +158,5 @@ dist_angular: 0.1
 
 initial_pose_real_zrp: true
 
-#select if the published pose is suposed to be calculated by the mean of the distribution
+#select if the published pose is supposed to be calculated by the mean of the distribution
 best_particle_as_mean: true
