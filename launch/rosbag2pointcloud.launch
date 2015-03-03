@@ -16,4 +16,19 @@
     		<param name="depthImgPubTopic" type="string" value="/rosbag_cam/depth_registered/image_raw" />
     		<param name="pointcloudPubTopic" type="string" value="/rosbag_cam/depth_registered/points" />
 	</node>
+	<!--node pkg="rosbag2pointcloud" type="rosbag2pointcloud" name="rosbag2pointcloud">
+    		<param name="rgbInfoSubTopic" type="string" value="/camera/rgb/camera_info" />
+    		<param name="rgbImgSubTopic" type="string" value="/camera/rgb/image_raw" />
+    		<param name="rgbRectImgSubTopic" type="string" value="/camera/rgb/image_rect_mono" />
+    		<param name="depthInfoSubTopic" type="string" value="/camera/depth_registered/camera_info" />
+    		<param name="depthImgSubTopic" type="string" value="/camera/depth_registered/image_raw" />
+    		<param name="pointcloudSubTopic" type="string" value="/camera/depth_registered/points" />
+
+    		<param name="rgbInfoPubTopic" type="string" value="/rosbag_cam/rgb/camera_info" />
+    		<param name="rgbImgPubTopic" type="string" value="/rosbag_cam/rgb/image_raw" />
+    		<param name="rgbRectImgPubTopic" type="string" value="/rosbag_cam/rgb/image_rect_mono" />
+    		<param name="depthInfoPubTopic" type="string" value="/rosbag_cam/depth_registered/camera_info" />
+    		<param name="depthImgPubTopic" type="string" value="/rosbag_cam/depth_registered/image_raw" />
+    		<param name="pointcloudPubTopic" type="string" value="/rosbag_cam/depth_registered/points" />
+	</node-->
 </launch>

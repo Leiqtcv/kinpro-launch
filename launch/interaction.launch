@@ -6,14 +6,17 @@
 	<node pkg="kinpro_interaction" type="kinpro_interaction" name="kinpro_interaction" output="screen" >
 		<param name="cloud_in" type="string" value="/camera/depth_registered/points" />
 		<param name="filter_min" type="double" value="0.2" />
-		<param name="filter_max" type="double" value="1.0" />
+		<param name="filter_max" type="double" value="1.5" />
 		<param name="use_concave_hull" type="bool" value="true" />
 		<param name="concave_alpha" type="double" value="0.02" />
-		<param name="plane_dist_thresh" type="double" value="0.4" />
+		<param name="plane_dist_thresh" type="double" value="0.05" />
 		<param name="line_length_thresh" type="double" value="0.03" />
-		<param name="moving_average_size" type="double" value="30" />
-		<param name="max_point_distance" type="double" value="0.1" />
+		<param name="moving_average_size" type="double" value="20" />
+		<param name="max_point_distance" type="double" value="0.05" />
+		<param name="sphere_radius" type="double" value="0.0025" />
 		<param name="visualize" type="bool" value="false" />
+		<param name="debug" type="bool" value="false" />
+		<param name="debug_nr" type="int" value="7" />
 	</node>
 
 	<group if="$(arg rosbag)" >

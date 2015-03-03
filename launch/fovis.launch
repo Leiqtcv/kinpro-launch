@@ -22,5 +22,37 @@
     <param name="base_link_frame_id" type="string" value="/base" />
     <param name="odom_frame_id" type="string" value="/odom" />
     <param name="publish_tf" type="bool" value="$(arg publish_tf)" />
+
+	<!-- Testing --> 
+	<param name="feature-window-size" type="string" value="9" />
+	<param name="max-pyramid-level" type="string" value="3" />
+	<param name="min-pyramid-level" type="string" value="0" />
+	<param name="target-pixels-per-feature" type="string" value="250" />
+	<param name="fast-threshold" type="string" value="20" />
+	<param name="use-adaptive-threshold" type="string" value="true" />
+	<param name="fast-threshold-adaptive-gain" type="string" value="0.005" />
+	<param name="use-homography-initialization" type="string" value="true" />
+	<param name="ref-frame-change-threshold" type="string" value="150" />
+
+	<param name="use-bucketing" type="string" value="true" />
+	<param name="bucket-width" type="string" value="80" />
+	<param name="bucket-height" type="string" value="80" />
+	<param name="max-keypoints-per-bucket" type="string" value="25" />
+	<param name="use-image-normalization" type="string" value="false" />
+
+	<param name="inlier-max-reprojection-error" type="string" value="1.5" />
+	<param name="clique-inlier-threshold" type="string" value="0.1" />
+	<param name="min-features-for-estimate" type="string" value="10" />
+	<param name="max-mean-reprojection-error" type="string" value="10.0" />
+	<param name="use-subpixel-refinement" type="string" value="true" />
+	<param name="feature-search-window" type="string" value="25" />
+	<param name="update-target-features-with-refined" type="string" value="false" />
+
+	<param name="stereo-require-mutual-match" type="string" value="true" />
+	<param name="stereo-max-dist-epipolar-line" type="string" value="1.5" />
+	<param name="stereo-max-refinement-displacement" type="string" value="1.0" />
+	<param name="stereo-max-disparity" type="string" value="128" />
+
+
   </node>
 </launch>

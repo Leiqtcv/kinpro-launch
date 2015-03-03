@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-	<node pkg="rosbag" type="play" name="player" args="/home/sysadm/octomaps/033/rosbags/cam_topics_reg_02_sink.bag -s 0.5 -l">
+	<node pkg="rosbag" type="play" name="player" args="/home/sysadm/octomaps/033/rosbags/cam_topics_reg_moving_01.bag -s 1.5 -l">
 		<remap from="camera/rgb/image_raw" to="rosbag/rgb/image_raw" />
 		<remap from="camera/rgb/image_rect_mono" to="rosbag/rgb/image_rect_mono" />
 		<remap from="camera/rgb/camera_info" to="rosbag/rgb/camera_info" />
@@ -9,4 +9,8 @@
 		<remap from="camera/depth_registered/camera_info" to="rosbag/depth_registered/camera_info" />
 		<remap from="camera/depth_registered/image_raw" to="rosbag/depth_registered/image_raw" />
 	</node>
+	<!--node pkg="rosbag" type="play" name="player" args="/home/sysadm/octomaps/033/rosbags/test.bag -s 1.5 -l">
+		<remap from="camera/rgb/image_rect_mono" to="rosbag/rgb/image_rect_mono" />
+		<remap from="camera/depth_registered/image_raw" to="rosbag/depth_registered/image_raw" />
+	</node-->
 </launch>
