@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<launch>
+
+	<arg name="rviz" default="false" />
+
+	<!-- launch the camera node -->
+	<include file="$(find kinpro_launch)/launch/camera.launch">
+		<arg name="dreg" value="true"/>
+		<arg name="driver" value="true"/>
+	</include>
+
+	<!-- launch the fovis visual odometry node -->
+	<include file="$(find kinpro_launch)/launch/fovis.launch">
+		<arg name="publish_tf" value="false" />
+		<arg name="camera" value="camera" />
+	</include>
+
+	<!-- launch the monte carlo localization node -->
+	<include file="$(find kinpro_launch)/launch/mcl_localization.launch">
+		<arg name="param_file" value="$(find kinpro_launch)/launch/mcl_localization.yaml"/>
+		<arg name="point_cloud_topic" value="/camera/depth_registered/points"/>
+	</include>
+
+	<!-- launch rviz -->
+	<group if="$(arg rviz)" >
+	<include file="$(find kinpro_launch)/launch/rviz.launch">
+		<arg name="config_file" value="$(find kinpro)/cfg/rviz/kinect_dreg.rviz"/>
+	</include>
+	</group>
+
+	<!-- launch the interaction node -->
+	<!--include file="$(find kinpro_launch)/launch/interaction.launch">
+		<arg name="rosbag" value="false"/>
+	</include-->	
+
+	<!-- launch the static tf transforms -->
+	<include file="$(find kinpro_launch)/launch/tf_base2camlink.launch">
+		<arg name="kinfu" value="false"/>
+		<arg name="fovis" value="true"/>
+	</include>
+
+	<!-- launch the octomap server -->
+	<include file="$(find kinpro_launch)/launch/octomap_server.launch">
+		<arg name="map" value="$(find kinpro)/resources/octomaps/room033.bt"/>
+	</include>
+
+	<!-- launch rosserial communication with imu -->
+	<!--include file="$(find kinpro_launch)/launch/rosserial.launch">
+		<arg name="port" value="/dev/ttyUSB0"/>
+	</include-->
+
+	<!-- launch the imu node -->
+	<include file="$(find kinpro_launch)/launch/imu_processor.launch">
+	</include>
+
+	<!-- launch the ekf node from robot_localization (ekf_acc for acceleration inclusion)-->
+	<include file="$(find kinpro_launch)/launch/ekf_acc.launch">
+		<arg name="visual_odometry_topic" value="/kinect_odometer/odometry" />
+		<arg name="imu_topic" value="/imu" />
+	</include>
+	
+</launch>

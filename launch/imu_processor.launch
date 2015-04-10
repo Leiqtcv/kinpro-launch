@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-	<node pkg="imu_dummy" type="imu_dummy_node" name="imu_dummy" >
+	<node pkg="imu_processor" type="imu_processor_node" name="imu_processor" >
 		<param name="roll" type="double" value="0.0" />
 		<param name="pitch" type="double" value="0" />
 		<param name="yaw" type="double" value="0.0" />

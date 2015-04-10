@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- launch the gui -->
+	<node pkg="kinpro" type="kinpro_node" name="kinpro_gui" output="screen" />
+	
+</launch>

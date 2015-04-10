@@ -79,8 +79,8 @@
 		<arg name="map" value="/home/sysadm/octomaps/033/room033_added_wall.bt"/>
 	</include>
 
-	<!-- launch the imu dummy node -->
-	<include file="$(find kinpro_launch)/launch/imu_dummy.launch">
+	<!-- launch the imu processor node -->
+	<include file="$(find kinpro_launch)/launch/imu_processor.launch">
 	</include>
 
 	<!-- launch the odometry combination node from robot_pose_ekf-->

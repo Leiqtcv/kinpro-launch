@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
 	<!-- default: /home/sysadm/.rviz/kinect.rviz -->
-	<arg name="config_file" default="/home/sysadm/.rviz/kinect.rviz"/>
+	<arg name="config_file" default="$(find kinpro)/cfg/rviz/kinect_dreg.rviz"/>
 	<node pkg="rviz" type="rviz" name="rviz" args="-d $(arg config_file)" />
 </launch>

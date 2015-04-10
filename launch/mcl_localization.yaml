@@ -41,10 +41,10 @@ sensor_sampling_dist: 0.05
 #update_min_rot: 0.785
 #update_min_head_yaw: 0.5
 #update_min_head_pitch: 0.5
-update_min_trans: 0.4
-update_min_rot: 0.3
-update_min_head_yaw: 0.3
-update_min_head_pitch: 0.2
+update_min_trans: 3.8
+update_min_rot: 3.8
+update_min_head_yaw: 3.8
+update_min_head_pitch: 3.8
 
 
 # laser obs. model (for raycasting only)

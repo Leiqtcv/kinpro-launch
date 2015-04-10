@@ -17,8 +17,8 @@
 		<arg name="map" value="/home/sysadm/octomaps/robolab.bt"/>
 	</include>
 
-	<!-- launch the imu dummy node -->
-	<include file="$(find kinpro_launch)/launch/imu_dummy.launch">
+	<!-- launch the imu processor node -->
+	<include file="$(find kinpro_launch)/launch/imu_processor.launch">
 	</include>
 
 	<!-- launch the monte carlo localization node -->
