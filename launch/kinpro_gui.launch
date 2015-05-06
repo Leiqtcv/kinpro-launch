@@ -2,6 +2,8 @@
 <launch>
 
 	<!-- launch the gui -->
-	<node pkg="kinpro" type="kinpro_node" name="kinpro_gui" output="screen" />
+	<node pkg="kinpro" type="kinpro_node" name="kinpro_gui" output="screen">
+		<remap from="/camera/depth_registered/points" to="/kinect2/depth_lowres/points" />
+	</node>
 	
 </launch>

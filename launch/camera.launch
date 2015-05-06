@@ -4,8 +4,16 @@
 	<arg name="dreg" default="true" />
 	<arg name="driver" default="true" />
 	
-	<include file="/home/sysadm/catkin_workspace/src/kinpro_launch/launch/openni.launch" >
+	<!-- using openni -->
+	<!--include file="$(find kinpro_launch)/launch/openni.launch" >
+		<arg name="depth_registration" value="$(arg dreg)" />
+		<arg name="load_driver" value="$(arg driver)" />
+	</include-->
+
+	<!-- using freenect -->
+	<include file="$(find kinpro_launch)/launch/freenect.launch" >
 		<arg name="depth_registration" value="$(arg dreg)" />
 		<arg name="load_driver" value="$(arg driver)" />
 	</include>
+	
 </launch>
