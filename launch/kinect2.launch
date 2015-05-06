@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- using freenect2 -->
+	<include file="$(find kinpro_launch)/launch/kinect2_bridge.launch" />
+	
+</launch>

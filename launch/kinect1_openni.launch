@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- true for fovis, false for kinfuLS -->
+	<arg name="dreg" default="true" />
+	<arg name="driver" default="true" />
+	
+	<!-- using openni -->
+	<include file="$(find kinpro_launch)/launch/openni.launch" >
+		<arg name="depth_registration" value="$(arg dreg)" />
+		<arg name="load_driver" value="$(arg driver)" />
+	</include>
+	
+</launch>
